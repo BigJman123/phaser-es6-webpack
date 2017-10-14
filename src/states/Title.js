@@ -9,11 +9,6 @@ export default class extends Phaser.State {
 
   create () {
 
-    const press = 'Press'
-    let text1 = this.add.text(200, 1000, press)
-    text1.font = 'Press Start 2P'
-    text1.fontSize = 35
-    text1.fill = '#fff'
 
     this.background = new Background({
       game: this.game,
@@ -33,7 +28,18 @@ export default class extends Phaser.State {
 
     this.game.add.existing(this.background)
     this.game.add.existing(this.controller)
-    // this.game.add.existing(this.car)
+
+    const press = 'Press'
+    let text1 = this.add.text(200, 1000, press)
+    text1.font = 'Press Start 2P'
+    text1.fontSize = 35
+    text1.fill = '#fff'
+
+    const toStart = 'To Start'
+    let text2 = this.add.text(610, 1000, toStart)
+    text2.font = 'Press Start 2P'
+    text2.fontSize = 35
+    text2.fill = '#fff'
   }
 
   // render () {
