@@ -1,6 +1,7 @@
 import 'pixi'
 import 'p2'
 import Phaser from 'phaser'
+window._ = require('lodash');
 
 import BootState from './states/Boot'
 import SplashState from './states/Splash'

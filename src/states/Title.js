@@ -2,6 +2,7 @@
 import Phaser from 'phaser'
 import Background from '../sprites/Background'
 import Controller from '../sprites/Controller'
+import { myCustomFunction } from '../utils'
 
 export default class extends Phaser.State {
   init () {}
@@ -9,6 +10,7 @@ export default class extends Phaser.State {
 
   create () {
 
+    // myCustomFunction('happy');
 
     this.background = new Background({
       game: this.game,
@@ -40,7 +42,9 @@ export default class extends Phaser.State {
     text2.font = 'Press Start 2P'
     text2.fontSize = 35
     text2.fill = '#fff'
+
   }
+
 
   // render () {
   //   if (__DEV__) {
