@@ -2,6 +2,8 @@
 import Phaser from 'phaser'
 import Background from '../sprites/Background'
 import Controller from '../sprites/Controller'
+import Spawn from '../sprites/Spawn'
+import TitleText from '../text/Title'
 import { myCustomFunction } from '../utils'
 
 export default class extends Phaser.State {
@@ -9,6 +11,8 @@ export default class extends Phaser.State {
   preload () {}
 
   create () {
+
+    this.physics.arcade.gravity.y = 200;
 
     // myCustomFunction('happy');
 
@@ -29,19 +33,16 @@ export default class extends Phaser.State {
     })
 
     this.game.add.existing(this.background)
+
+
+    this.spawn = new Spawn(this.game);
+    this.spawn.start();
+
     this.game.add.existing(this.controller)
 
-    const press = 'Press'
-    let text1 = this.add.text(200, 1000, press)
-    text1.font = 'Press Start 2P'
-    text1.fontSize = 35
-    text1.fill = '#fff'
-
-    const toStart = 'To Start'
-    let text2 = this.add.text(610, 1000, toStart)
-    text2.font = 'Press Start 2P'
-    text2.fontSize = 35
-    text2.fill = '#fff'
+    
+    this.game.add.existing(new TitleText(this.game, 200, 1000, "Press"));
+    this.game.add.existing(new TitleText(this.game, 610, 1000, "To Start"));
 
   }
 
