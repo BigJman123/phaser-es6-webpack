@@ -5,7 +5,7 @@ export default class {
   constructor (game) {
     // super()
 
-    this.enemy = new Enemy(game);
+    this.enemy = new Enemy(game)
 
   }
 
@@ -19,7 +19,7 @@ export default class {
 
 		setTimeout(() => {
 			if (config.spawning && wait > 0) {
-				this.enemy.create();
+				this.enemy.create()
 				resolve();
 			} else {
 				reject();
@@ -29,8 +29,8 @@ export default class {
 
 	})
 	.then(() => this.spawn(config.spawnDelay))
-	.catch(() => console.log('no more enemies'));
-};
+	.catch(() => console.log('no more enemies'))
+}
 
   update () {
     

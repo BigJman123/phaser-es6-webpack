@@ -5,17 +5,17 @@ export default class {
     // super()
 
     this.enemyNames = ['car1','car2','car3','car4','car5','car6','car7', 'car8', 'car9', 'car10']
-	this.enemyX = [238, 398, 568, 728]
-    
+    this.enemyX = [238, 398, 568, 728]
+  
 
-	this.enemy = game.add.group()
+    this.enemy = game.add.group()
     this.enemy.enableBody = true
   }
 
   create() {
 
-	let x = _.sample(this.enemyX)
-	let sprite = _.sample(this.enemyNames)
+  	let x = _.sample(this.enemyX)
+  	let sprite = _.sample(this.enemyNames)
   	
 
     const enemyCars = this.enemy.create(x, -350, sprite);

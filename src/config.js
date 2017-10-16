@@ -4,6 +4,7 @@ export default {
   localStorageName: 'phaseres6webpack',
 
   spawning: true,
+  playerControlsEnabled: true,
 
   gravity: 200,
   spawnDelay: 1000,
