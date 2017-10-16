@@ -10,22 +10,26 @@ export default class {
   }
 
   start() {
+  	config.spawning = true;
   	this.spawn(config.spawnDelay)
+  }
+
+  stop() {
+  	config.spawning = false;
   }
 
   spawn(wait) {
 
 	new Promise((resolve, reject) => {
 
-		setTimeout(() => {
-			if (config.spawning && wait > 0) {
-				this.enemy.create()
-				resolve();
-			} else {
-				reject();
-			}
-
-		}, wait);
+		if (config.spawning && wait > 0) {
+			setTimeout(() => {
+					this.enemy.create()
+					resolve();
+			}, wait);
+		} else {
+			reject();
+		}
 
 	})
 	.then(() => this.spawn(config.spawnDelay))

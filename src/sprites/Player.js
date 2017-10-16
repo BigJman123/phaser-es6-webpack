@@ -7,6 +7,10 @@ export default class extends Phaser.Sprite {
     this.scale.setTo(.8, .8)
   }
 
+  tween(game) {
+  	// this.game.add.tween(this.cherryred).to({y: 1000}, 2000, Phaser.Easing.Quadratic.Out, true);
+  }
+
   update () {
     // this.angle += 1
   }

@@ -12,6 +12,8 @@ export default class extends Phaser.State {
 
   create () {
 
+    this.camera.flash('#000000');
+
     this.physics.arcade.gravity.y = 200;
 
     // myCustomFunction('happy');
