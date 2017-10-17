@@ -29,8 +29,9 @@ export default class {
 
 		car.body.velocity.x = 0
 	    car.body.velocity.y = 0
+
     
-	    if(playerControlsEnabled) {
+	    if(config.playerControlsEnabled) {
 	        
 	        if(this.controller.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
 	            car.body.velocity.x -= 600

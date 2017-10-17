@@ -4,9 +4,12 @@ export default {
   localStorageName: 'phaseres6webpack',
 
   spawning: true,
+  // playerControlsEnabled will be false in final code
   playerControlsEnabled: true,
 
   gravity: 200,
   spawnDelay: 1000,
   roadSpeed: 18,
+
+  minute: 61
 }

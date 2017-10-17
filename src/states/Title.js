@@ -27,15 +27,13 @@ export default class extends Phaser.State {
       asset: 'highway'
     })
 
-    // Controller Sprite
-    
-
     this.game.add.existing(this.background)
 
 
     this.spawn = new Spawn(this.game)
     this.spawn.start()
 
+    // Controller Sprite
     this.game.add.existing(new Controller({
       game: this.game,
       x: 375,
@@ -54,11 +52,4 @@ export default class extends Phaser.State {
   update () {
     this.controls.startGameOnButtonPress();
   }
-
-
-  // render () {
-  //   if (__DEV__) {
-  //     this.game.debug.spriteInfo(this.car, 32, 32)
-  //   }
-  // }
 }
