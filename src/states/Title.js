@@ -42,8 +42,8 @@ export default class extends Phaser.State {
     }))
 
     
-    this.game.add.existing(new TitleText(this.game, 200, 1000, "Press"))
-    this.game.add.existing(new TitleText(this.game, 610, 1000, "To Start"))
+    this.game.add.existing(new TitleText(this.game, 200, 1000, "Press", { fontSize: '35px', fill: '#fff', font: 'Press Start 2P' }))
+    this.game.add.existing(new TitleText(this.game, 610, 1000, "To Start", { fontSize: '35px', fill: '#fff', font: 'Press Start 2P' }))
 
     this.controls = new Controls(this.game);
 

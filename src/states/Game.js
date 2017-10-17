@@ -4,6 +4,7 @@ import Spawn from '../sprites/Spawn'
 import Player from '../sprites/Player'
 import Background from '../sprites/Background'
 import Controls from '../sprites/Controls'
+import TitleText from '../text/Title'
 import config from '../config'
 
 export default class extends Phaser.State {
@@ -29,6 +30,8 @@ export default class extends Phaser.State {
     this.setWallBounds()
 
     this.controls = new Controls(this.game)
+
+    this.game.add.existing(new TitleText(this.game, 200, 1000, "3"))
 
   }
 
