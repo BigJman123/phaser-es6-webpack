@@ -3,7 +3,6 @@ import Phaser from 'phaser'
 import Background from '../sprites/Background'
 import Controller from '../sprites/Controller'
 import Spawn from '../sprites/Spawn'
-import TitleText from '../text/Title'
 import Controls from '../sprites/Controls'
 import { myCustomFunction } from '../utils'
 
@@ -42,8 +41,8 @@ export default class extends Phaser.State {
     }))
 
     
-    this.game.add.existing(new TitleText(this.game, 200, 1000, "Press", { fontSize: '35px', fill: '#fff', font: 'Press Start 2P' }))
-    this.game.add.existing(new TitleText(this.game, 610, 1000, "To Start", { fontSize: '35px', fill: '#fff', font: 'Press Start 2P' }))
+    this.game.add.existing(new Phaser.Text(this.game, 200, 1000, "Press", { fontSize: '35px', fill: '#fff', font: 'Press Start 2P' }))
+    this.game.add.existing(new Phaser.Text(this.game, 610, 1000, "To Start", { fontSize: '35px', fill: '#fff', font: 'Press Start 2P' }))
 
     this.controls = new Controls(this.game);
 

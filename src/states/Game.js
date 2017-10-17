@@ -4,8 +4,9 @@ import Spawn from '../sprites/Spawn'
 import Player from '../sprites/Player'
 import Background from '../sprites/Background'
 import Controls from '../sprites/Controls'
-import TitleText from '../text/Title'
+// import Text from 'phaser/text'
 import config from '../config'
+import GameText from '../text/GameText'
 
 export default class extends Phaser.State {
   init () {}
@@ -31,8 +32,8 @@ export default class extends Phaser.State {
 
     this.controls = new Controls(this.game)
 
-    this.game.add.existing(new TitleText(this.game, 200, 1000, "3"))
-
+    this.GameText = new GameText(this.game);
+    this.GameText.countdown();
   }
 
 
@@ -79,6 +80,7 @@ export default class extends Phaser.State {
     this.game.physics.arcade.collide(this.car, this.wallLeft);
     this.game.physics.arcade.collide(this.car, this.wallRight);
   }
+
   
   update() {
     // detect collisions
