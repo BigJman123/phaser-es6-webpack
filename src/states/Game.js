@@ -7,7 +7,6 @@ import Controls from '../sprites/Controls'
 // import Text from 'phaser/text'
 import config from '../config'
 import GameText from '../text/GameText'
-import Timer from '../sprites/Timer'
 
 export default class extends Phaser.State {
   init () {}
@@ -36,7 +35,7 @@ export default class extends Phaser.State {
     this.GameText = new GameText(this.game)
     this.GameText.countdown()
 
-    this.timerText = new Phaser.Text(this.game, 380, 100, "Time:" + config.minute, { fontSize: '45px', fill: '#fff', font: 'Press Start 2P' });
+    this.timerText = new Phaser.Text(this.game, 383, 100, "Time:" + config.minute, { fontSize: '45px', fill: '#fff', font: 'Press Start 2P' });
     setTimeout(() => this.game.add.existing(this.timerText), 7000)
     
     this.setTimer()
