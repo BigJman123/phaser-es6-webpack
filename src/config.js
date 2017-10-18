@@ -11,5 +11,5 @@ export default {
   spawnDelay: 1000,
   roadSpeed: 18,
 
-  minute: 61
+  minute: 60
 }
