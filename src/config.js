@@ -1,4 +1,5 @@
 export default {
+  state: 'Title',
   gameWidth: 1080,
   gameHeight: 1920,
   localStorageName: 'phaseres6webpack',
@@ -11,5 +12,7 @@ export default {
   spawnDelay: 1000,
   roadSpeed: 18,
 
-  minute: 60
+  minute: 60,
+
+  lives: 3
 }

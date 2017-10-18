@@ -15,6 +15,7 @@ export default class {
 
 	startGameOnButtonPress () {
 		if (this.controller.justPressed(Phaser.Gamepad.XBOX360_A)){
+			config.state = 'Game';
 			config.spawning = false;
 			this.game.camera.fade();
 			setTimeout(() => this.game.state.start('Game'), 1200);

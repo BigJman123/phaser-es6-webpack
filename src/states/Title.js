@@ -4,6 +4,7 @@ import Background from '../sprites/Background'
 import Controller from '../sprites/Controller'
 import Spawn from '../sprites/Spawn'
 import Controls from '../sprites/Controls'
+import config from '../config'
 import { myCustomFunction } from '../utils'
 
 export default class extends Phaser.State {
@@ -49,6 +50,8 @@ export default class extends Phaser.State {
   }
 
   update () {
-    this.controls.startGameOnButtonPress();
+    if (config.state === 'Title') {
+      this.controls.startGameOnButtonPress();
+    }
   }
 }

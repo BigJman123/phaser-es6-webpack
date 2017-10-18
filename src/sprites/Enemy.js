@@ -7,8 +7,8 @@ export default class {
     this.enemyX = [238, 398, 568, 728]
   
 
-    this.enemy = game.add.group()
-    this.enemy.enableBody = true
+    game.enemy = game.add.group()
+    game.enemy.enableBody = true
   }
 
   create() {
@@ -17,7 +17,7 @@ export default class {
   	let sprite = _.sample(this.enemyNames)
   	
 
-    const enemyCars = this.enemy.create(x, -350, sprite);
+    const enemyCars = game.enemy.create(x, -350, sprite);
     enemyCars.scale.setTo(.8, .8);
     enemyCars.body.immovable = true;
 
