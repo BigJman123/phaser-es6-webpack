@@ -6,7 +6,7 @@ export default {
 
   spawning: true,
   // playerControlsEnabled will be false in final code
-  playerControlsEnabled: true,
+  playerControlsEnabled: false,
 
   gravity: 200,
   spawnDelay: 1000,

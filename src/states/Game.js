@@ -123,9 +123,7 @@ export default class extends Phaser.State {
   // }
 
   setLives() {
-    if(this.game.physics.arcade.collide(this.car, this.wallLeft)) {
-      console.log('collide')
-    }
+    
 
     // this.carLives = new Phaser.Sprite(this.game, 25, 1775, 'lives', 0)
     // this.carLives.scale.setTo(.4, .4)
