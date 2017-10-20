@@ -46,11 +46,16 @@ export default class extends Phaser.State {
     this.spawn = new Spawn(this.game)
     setTimeout(() => this.spawn.start(), 7000)
     
-    console.log('create method called');
+    console.log('create method called')
 
     this.carLives = new Phaser.Sprite(this.game, 25, 1775, 'lives', 0)
     this.carLives.scale.setTo(.4, .4)
     this.game.add.existing(this.carLives)
+    // this.carLives.frame = 1
+    // this.carLives.frame = config.lives
+
+    // this.setHealth()
+    // this.hitHealth()
   }
 
 
@@ -109,37 +114,38 @@ export default class extends Phaser.State {
     }
   }
 
-  // setLives() {
-  //   config.lives--
-
-  //   this.livesText.setText("Lives: " + config.lives)
-
-  //   console.log(config.lives)
-
-  //   // if(config.lives === 0) {
-  //   //   this.car.kill()
-  //   // }
-
-  // }
-
   setLives() {
-    
 
-    // this.carLives = new Phaser.Sprite(this.game, 25, 1775, 'lives', 0)
-    // this.carLives.scale.setTo(.4, .4)
-    // this.game.add.existing(this.carLives)
+
   }
 
+  setHealth() {
+    let lives = config.lives
 
+  }
   
   update() {
     // detect collisions
     game.physics.arcade.collide(this.car, this.wallLeft)
     game.physics.arcade.collide(this.car, this.wallRight)
 
-    game.physics.arcade.collide(this.game.enemy, this.car, function(car, enemy) {
+    game.physics.arcade.collide(this.game.enemy, this.car, (car, enemy) =>  {
 
-       enemy.destroy();
+      config.lives--;
+      this.carLives.frame++;
+
+      if(config.lives === 0) {
+        
+        let explosion = game.add.sprite(this.car.x - 115, this.car.y - 100, 'explosion');
+        let boom = explosion.animations.add('boom');
+        explosion.scale.setTo(2.5, 2.5);
+        explosion.animations.play('boom', 30, false, true);
+
+        this.car.kill()
+      }
+
+
+      enemy.destroy();
     
       // cause explosion
       let explosion = game.add.sprite(enemy.x - 55, enemy.y, 'explosion');
@@ -162,7 +168,7 @@ export default class extends Phaser.State {
         this.car.body.collideWorldBounds = false
     }
 
-    this.setLives()
+    // this.setLives()
 
   }
 }
