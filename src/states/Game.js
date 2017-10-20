@@ -103,7 +103,7 @@ export default class extends Phaser.State {
 
     setTimeout(() => {timer.start()}, 7000)
   
-    function updateCounter() {
+    function updateCounter(timer) {
 
       config.minute--
 
@@ -114,17 +114,24 @@ export default class extends Phaser.State {
     }
   }
 
-  setLives() {
+  updateTimer() {
 
+    // stop timer
 
+    this.livesText.kill()
+    this.timerText.kill()
+    this.carLives.kill()
   }
 
-  setHealth() {
-    let lives = config.lives
-
-  }
-  
   update() {
+    if(config.minute > 0) {
+        setTimeout(() => {this.car.body.collideWorldBounds = true}, 3000)
+    }
+    else {
+        this.car.body.collideWorldBounds = false
+    }
+
+
     // detect collisions
     game.physics.arcade.collide(this.car, this.wallLeft)
     game.physics.arcade.collide(this.car, this.wallRight)
@@ -142,6 +149,14 @@ export default class extends Phaser.State {
         explosion.animations.play('boom', 30, false, true);
 
         this.car.kill()
+
+        this.gameOver = new Phaser.Text(this.game, 319, 300, 'Game Over', { fontSize: '50px', fill: '#fff', font: 'Press Start 2P' })
+        setTimeout(() => this.game.add.existing(this.gameOver), 1500)
+
+
+        this.updateTimer()
+        // setTimeout(() => this.game.state.start('Game'), 2000)
+        
       }
 
 
@@ -160,15 +175,6 @@ export default class extends Phaser.State {
     });
 
     this.controls.moveCarOnDirectionInput(this.car)
-
-    if(config.minute > 0) {
-        setTimeout(() => {this.car.body.collideWorldBounds = true}, 3000)
-    }
-    else {
-        this.car.body.collideWorldBounds = false
-    }
-
-    // this.setLives()
 
   }
 }
