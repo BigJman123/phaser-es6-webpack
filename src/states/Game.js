@@ -115,12 +115,32 @@ export default class extends Phaser.State {
   }
 
   updateTimer() {
+    if(! config.endOfLevel && config.minute === 0) {
 
-    // stop timer
+      config.endOfLevel = true
+      config.spawning = false
 
-    this.livesText.kill()
-    this.timerText.kill()
-    this.carLives.kill()
+      config.playerControlsEnabled = false;
+      this.car.angle = 0;
+
+
+      // stop timer
+      this.timerText.kill()
+
+      this.livesText.kill()
+      this.carLives.kill()
+
+      setTimeout(() => {
+        this.game.add.tween(this.car).to({y: -500}, 2000, Phaser.Easing.Quadratic.In, true)
+      }, 4000);
+
+      setTimeout(() => {
+        this.camera.fade('#000000');
+      }, 6000);
+
+      
+      
+    }
   }
 
   update() {
@@ -173,6 +193,8 @@ export default class extends Phaser.State {
       game.camera.flash(0xff0000, 200);
 
     });
+
+    this.updateTimer()
 
     this.controls.moveCarOnDirectionInput(this.car)
 
