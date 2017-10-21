@@ -138,6 +138,7 @@ export default class extends Phaser.State {
         this.camera.fade('#000000');
       }, 6000);
 
+      setTimeout(() => this.game.state.start('Win'), 7000);
       
     }
   }
