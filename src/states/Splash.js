@@ -34,6 +34,6 @@ export default class extends Phaser.State {
   }
 
   create () {
-    this.state.start('Win')
+    this.state.start('Game')
   }
 }
