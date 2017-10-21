@@ -139,7 +139,6 @@ export default class extends Phaser.State {
       }, 6000);
 
       
-      
     }
   }
 
@@ -169,13 +168,16 @@ export default class extends Phaser.State {
         explosion.animations.play('boom', 30, false, true);
 
         this.car.kill()
+        this.timerText.kill()
+        this.livesText.kill()
+        this.carLives.kill()
 
         this.gameOver = new Phaser.Text(this.game, 319, 300, 'Game Over', { fontSize: '50px', fill: '#fff', font: 'Press Start 2P' })
         setTimeout(() => this.game.add.existing(this.gameOver), 1500)
 
+        // this.game.state.start('Boot')
 
-        this.updateTimer()
-        // setTimeout(() => this.game.state.start('Game'), 2000)
+        setTimeout(() => window.location = 'index.html', 3500)
         
       }
 
