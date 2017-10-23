@@ -18,7 +18,7 @@ export default class {
     this.spawnDelay = 1000;
     this.roadSpeed = 18;
 
-    this.minute = 10;
+    this.minute = 60;
 
     this.lives = 3;
 

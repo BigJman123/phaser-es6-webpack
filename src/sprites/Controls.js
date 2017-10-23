@@ -13,7 +13,7 @@ export default class {
 	}
 
 	startGameOnButtonPress () {
-		if (this.controller.justPressed(Phaser.Gamepad.XBOX360_A)){
+		if (this.controller.justPressed(Phaser.Gamepad.XBOX360_A) || this.controller.justPressed(Phaser.Gamepad.XBOX360_B)){
 			this.game.config.state = 'Game';
 			this.game.config.spawning = false;
 			this.game.camera.fade();
