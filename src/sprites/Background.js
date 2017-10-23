@@ -7,6 +7,6 @@ export default class extends Phaser.TileSprite {
 
   update () {
     // this.angle += 1
-    this.tilePosition.y += 18;
+    this.tilePosition.y += this.game.config.roadSpeed;
   }
 }

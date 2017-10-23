@@ -5,10 +5,11 @@ export default class {
 
     this.enemyNames = ['car1','car2','car3','car4','car5','car6','car7', 'car8', 'car9', 'car10']
     this.enemyX = [238, 398, 568, 728]
-  
 
-    game.enemy = game.add.group()
-    game.enemy.enableBody = true
+    this.game = game;
+  
+    this.game.enemy = game.add.group()
+    this.game.enemy.enableBody = true
   }
 
   create() {
@@ -22,5 +23,6 @@ export default class {
     enemyCars.body.immovable = true;
 
   }
+
 
 }
