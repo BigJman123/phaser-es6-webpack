@@ -1,28 +1,27 @@
-import config from '../config'
 import Enemy from './Enemy'
 
 export default class {
   constructor (game) {
     // super()
-
+    this.game = game;
     this.enemy = new Enemy(game)
 
   }
 
   start() {
-  	config.spawning = true;
-  	this.spawn(config.spawnDelay)
+  	this.game.config.spawning = true;
+  	this.spawn(this.game.config.spawnDelay)
   }
 
   stop() {
-  	config.spawning = false;
+  	this.game.config.spawning = false;
   }
 
   spawn(wait) {
 
 	new Promise((resolve, reject) => {
 
-		if (config.spawning && wait > 0) {
+		if (this.game.config.spawning && wait > 0) {
 			setTimeout(() => {
 					this.enemy.create()
 					resolve();
@@ -32,7 +31,7 @@ export default class {
 		}
 
 	})
-	.then(() => this.spawn(config.spawnDelay))
+	.then(() => this.spawn(this.game.config.spawnDelay))
 	.catch(() => console.log('no more enemies'))
 }
 

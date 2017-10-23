@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import config from '../config'
 
 export default class {
 	constructor(game) {
@@ -22,7 +21,7 @@ export default class {
 	    this.go = new Phaser.Text(this.game, 410, 300, "GO!", { fontSize: '125px', fill: '#fff', font: 'Press Start 2P' })
 	    setTimeout(() => {
 	    	this.game.add.existing(this.go)
-	    	config.playerControlsEnabled = true
+	    	this.game.config.playerControlsEnabled = true
 		}, 6250)
 	    setTimeout(() => this.go.kill(), 6750)
 	}

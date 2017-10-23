@@ -5,13 +5,14 @@ import Player from '../sprites/Player'
 import Background from '../sprites/Background'
 import Controls from '../sprites/Controls'
 // import Text from 'phaser/text'
-import config from '../config'
 import GameText from '../text/GameText'
 
 export default class extends Phaser.State {
   init () {}
 
   create () {
+
+    this.game.config.reset();
 
   	this.camera.flash('#000000');
 
@@ -35,7 +36,7 @@ export default class extends Phaser.State {
     this.GameText = new GameText(this.game)
     this.GameText.countdown()
 
-    this.timerText = new Phaser.Text(this.game, 383, 100, "Time:" + config.minute, { fontSize: '45px', fill: '#fff', font: 'Press Start 2P' });
+    this.timerText = new Phaser.Text(this.game, 383, 100, "Time:" + this.game.config.minute, { fontSize: '45px', fill: '#fff', font: 'Press Start 2P' });
     setTimeout(() => this.game.add.existing(this.timerText), 7000)
 
     this.livesText = new Phaser.Text(this.game, 22, 1725, "Lives", { fontSize: '35px', fill: '#fff', font: 'Press Start 2P' });
@@ -105,9 +106,9 @@ export default class extends Phaser.State {
   
     function updateCounter(timer) {
 
-      config.minute--
+      this.game.config.minute--
 
-      this.timerText.setText("Time:" + config.minute)
+      this.timerText.setText("Time:" + this.game.config.minute)
       
       // console.log(config.minute)
 
@@ -115,12 +116,12 @@ export default class extends Phaser.State {
   }
 
   updateTimer() {
-    if(! config.endOfLevel && config.minute === 0) {
+    if(! this.game.config.endOfLevel && this.game.config.minute === 0) {
 
-      config.endOfLevel = true
-      config.spawning = false
+      this.game.config.endOfLevel = true
+      this.game.config.spawning = false
 
-      config.playerControlsEnabled = false;
+      this.game.config.playerControlsEnabled = false;
       this.car.angle = 0;
 
 
@@ -144,7 +145,7 @@ export default class extends Phaser.State {
   }
 
   update() {
-    if(config.minute > 0) {
+    if(this.game.config.minute > 0) {
         setTimeout(() => {this.car.body.collideWorldBounds = true}, 3000)
     }
     else {
@@ -158,10 +159,10 @@ export default class extends Phaser.State {
 
     game.physics.arcade.collide(this.game.enemy, this.car, (car, enemy) =>  {
 
-      config.lives--;
+      this.game.config.lives--;
       this.carLives.frame++;
 
-      if(config.lives === 0) {
+      if(this.game.config.lives === 0) {
         
         let explosion = game.add.sprite(this.car.x - 115, this.car.y - 100, 'explosion');
         let boom = explosion.animations.add('boom');

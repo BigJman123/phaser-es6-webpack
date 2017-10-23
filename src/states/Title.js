@@ -4,13 +4,14 @@ import Background from '../sprites/Background'
 import Controller from '../sprites/Controller'
 import Spawn from '../sprites/Spawn'
 import Controls from '../sprites/Controls'
-import config from '../config'
 import { myCustomFunction } from '../utils'
 
 export default class extends Phaser.State {
   init () {}
 
   create () {
+
+    this.game.config.reset();
 
     this.camera.flash('#000000');
 
@@ -50,7 +51,7 @@ export default class extends Phaser.State {
   }
 
   update () {
-    if (config.state === 'Title') {
+    if (this.game.config.state === 'Title') {
       this.controls.startGameOnButtonPress();
     }
   }

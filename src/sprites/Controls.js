@@ -1,5 +1,4 @@
 import Phaser from 'phaser'
-import config from '../config'
 
 export default class {
 	constructor (game) {
@@ -15,8 +14,8 @@ export default class {
 
 	startGameOnButtonPress () {
 		if (this.controller.justPressed(Phaser.Gamepad.XBOX360_A)){
-			config.state = 'Game';
-			config.spawning = false;
+			this.game.config.state = 'Game';
+			this.game.config.spawning = false;
 			this.game.camera.fade();
 			setTimeout(() => this.game.state.start('Game'), 1200);
 		}
@@ -32,7 +31,7 @@ export default class {
 	    car.body.velocity.y = 0
 
     
-	    if(config.playerControlsEnabled) {
+	    if(this.game.config.playerControlsEnabled) {
 	        
 	        if(this.controller.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
 	            car.body.velocity.x -= 600

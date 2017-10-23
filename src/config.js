@@ -1,20 +1,29 @@
-export default {
-  state: 'Title',
-  gameWidth: 1080,
-  gameHeight: 1920,
-  localStorageName: 'phaseres6webpack',
+export default class {
 
-  spawning: true,
-  // playerControlsEnabled will be false in final code
-  playerControlsEnabled: false,
+  constructor() {
+    this.reset();
+  }
 
-  gravity: 200,
-  spawnDelay: 1000,
-  roadSpeed: 18,
+  reset() {
+    this.state = 'Title';
+    // this.gameWidth = 1080;
+    // this.gameHeight = 1920;
+    this.localStorageName = 'phaseres6webpack';
 
-  minute: 10,
+    this.spawning = true;
+    // playerControlsEnabled will be false in final code
+    this.playerControlsEnabled = false;
 
-  lives: 3,
+    this.gravity = 200;
+    this.spawnDelay = 1000;
+    this.roadSpeed = 18;
 
-  endOfLevel: false
+    this.minute = 10;
+
+    this.lives = 3;
+
+    this.endOfLevel = false;
+
+    this.enableDebug = true;
+  }
 }
