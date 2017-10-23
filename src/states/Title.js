@@ -1,7 +1,7 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
 import Background from '../sprites/Background'
-import Controller from '../sprites/Controller'
+import Button from '../sprites/Button'
 import Spawn from '../sprites/Spawn'
 import Controls from '../sprites/Controls'
 import { myCustomFunction } from '../utils'
@@ -14,6 +14,7 @@ export default class extends Phaser.State {
     this.game.config.reset();
 
     this.camera.flash('#000000');
+
 
     this.physics.arcade.gravity.y = 200;
 
@@ -30,16 +31,17 @@ export default class extends Phaser.State {
 
     this.game.add.existing(this.background)
 
+    this.game.sounds.win.play("", 0, .2, false, false)
 
     this.spawn = new Spawn(this.game)
     this.spawn.start()
 
     // Controller Sprite
-    this.game.add.existing(new Controller({
+    this.game.add.existing(new Button({
       game: this.game,
-      x: 375,
-      y: 890,
-      asset: 'controller'
+      x: 415,
+      y: 860,
+      asset: 'button'
     }))
 
     

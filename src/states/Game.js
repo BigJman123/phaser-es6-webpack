@@ -57,11 +57,11 @@ export default class extends Phaser.State {
     this.carLives = new Phaser.Sprite(this.game, 25, 1775, 'lives', 0)
     this.carLives.scale.setTo(.4, .4)
     this.game.add.existing(this.carLives)
-    // this.carLives.frame = 1
-    // this.carLives.frame = config.lives
 
-    // this.setHealth()
-    // this.hitHealth()
+    
+
+    setTimeout(() => this.game.sounds.bgmusic.play("", 0, .5, false, false), 200)
+
   }
 
 
@@ -138,6 +138,8 @@ export default class extends Phaser.State {
       this.livesText.kill()
       this.carLives.kill()
 
+      // this.game.sounds.bgmusic.stop()
+
       setTimeout(() => {
         this.game.add.tween(this.car).to({y: -500}, 2000, Phaser.Easing.Quadratic.In, true)
       }, 4000);
@@ -175,23 +177,36 @@ export default class extends Phaser.State {
 
       if (this.game.config.spawning) {
 
+        // explode car!
+        this.game.sounds.explode.play("", 0, .2, false, true)
+
         this.game.config.lives--;
         this.carLives.frame++;
 
         this.spawn.destroyEnemy(enemy);
 
         if(this.game.config.lives === 0) {
+
+          this.game.config.spawning = false
           
           this.car.kill()
           this.timerText.kill()
           this.livesText.kill()
           this.carLives.kill()
 
-          this.gameOver = new Phaser.Text(this.game, 319, 300, 'Game Over', { fontSize: '50px', fill: '#fff', font: 'Press Start 2P' })
-          setTimeout(() => this.game.add.existing(this.gameOver), 1500)
+          this.game.config.playerControlsEnabled = false;
 
-          setTimeout(() => this.camera.fade('#000000'), 3000)
-          setTimeout(() => this.game.state.start('Title'), 4000)
+          // queue the music!
+          this.game.sounds.deadMusic.play("", 0, .5, false, false)
+
+          // stop the music!
+          this.game.sounds.bgmusic.stop()
+
+          this.gameOver = new Phaser.Text(this.game, 319, 300, 'Game Over', { fontSize: '50px', fill: '#fff', font: 'Press Start 2P' })
+          setTimeout(() => this.game.add.existing(this.gameOver), 1900)
+
+          setTimeout(() => this.camera.fade('#000000'), 4500)
+          setTimeout(() => this.game.state.start('Title'), 5500)
           
         } 
 

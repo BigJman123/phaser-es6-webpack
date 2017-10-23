@@ -29,11 +29,28 @@ export default class extends Phaser.State {
     this.load.image('wall2', 'assets/images/wall2.png', 300, 1920);
     this.load.image('win', 'assets/images/win.png', 1080, 1920);
     this.load.spritesheet('explosion', 'assets/images/explosion.png', 96, 96);
-    this.load.spritesheet('controller', 'assets/images/controller.png', 320, 320);
+    this.load.spritesheet('button', 'assets/images/buttonpush.png', 98, 144);
     this.load.spritesheet('lives', 'assets/images/livessprite.png', 450, 302);
+
+    this.load.audio('game', 'assets/sounds/game.mp3');
+    this.load.audio('win', 'assets/sounds/win.mp3');
+    this.load.audio('dead', 'assets/sounds/dead.mp3');
+    this.load.audio('horn', 'assets/sounds/horn.mp3');
+    this.load.audio('explosion', 'assets/sounds/explosion.mp3');
   }
 
   create () {
+
+
+    //setup sounds
+    this.game.sounds.bgmusic = new Phaser.Sound(this.game, 'game', 1, false)
+    this.game.sounds.deadMusic = new Phaser.Sound(this.game, 'dead', 1, false)
+    this.game.sounds.explode = new Phaser.Sound(this.game, 'explosion', .8, false)
+    this.game.sounds.horn = new Phaser.Sound(this.game, 'horn', 1, false)
+    this.game.sounds.win = new Phaser.Sound(this.game, 'win', 1, false)
+
+
+    // start the Title screen
     this.state.start('Title')
   }
 }

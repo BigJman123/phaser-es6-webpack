@@ -1,7 +1,6 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
 import Background from '../sprites/Background'
-import Controller from '../sprites/Controller'
 import Spawn from '../sprites/Spawn'
 import Controls from '../sprites/Controls'
 import { myCustomFunction } from '../utils'
@@ -10,6 +9,8 @@ export default class extends Phaser.State {
   init () {}
 
   create () {
+    
+    this.game.sounds.win.play("", 0, .5, false, false)
 
     this.camera.flash('#000000');
 

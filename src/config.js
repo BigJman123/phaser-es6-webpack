@@ -11,7 +11,6 @@ export default class {
     this.localStorageName = 'phaseres6webpack';
 
     this.spawning = true;
-    // playerControlsEnabled will be false in final code
     this.playerControlsEnabled = false;
 
     this.gravity = 200;
