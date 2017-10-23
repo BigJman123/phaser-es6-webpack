@@ -35,4 +35,6 @@ export default class extends Phaser.State {
 
     setTimeout(() => this.game.camera.fade(), 9000)
 
+    setTimeout(() => this.game.state.start('Info'), 10000)
+
   }}
