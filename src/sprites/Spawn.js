@@ -66,7 +66,7 @@ export default class {
     let enemies = this.game.enemy.children;
 
     enemies.forEach((enemy, i) => {
-      this.game.sounds.explode.play("", 0, .2, false, true)
+      // this.game.sounds.explode.play("", 0, .2, false, true)
       let e = enemy;
       setTimeout(() => this.destroyEnemy(e), i*100);
     });

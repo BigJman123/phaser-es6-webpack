@@ -7,8 +7,4 @@ export default class extends Phaser.Sprite {
     this.animations.add('press')
     this.animations.play('press', 2, true, false)
   }
-
-  update () {
-    
-  }
 }

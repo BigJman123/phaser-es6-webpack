@@ -31,7 +31,7 @@ export default class extends Phaser.State {
 
     this.game.add.existing(this.background)
 
-    this.game.sounds.win.play("", 0, .2, false, false)
+    // this.game.sounds.win.play("", 0, .2, false, false)
 
     this.spawn = new Spawn(this.game)
     this.spawn.start()
