@@ -10,7 +10,7 @@ export default class extends Phaser.State {
 
   create () {
     
-    this.game.sounds.win.play("", 0, .5, false, false)
+    this.game.sounds.win.play("", 0, .3, false, false)
 
     this.camera.flash('#000000');
 
@@ -35,6 +35,8 @@ export default class extends Phaser.State {
 
     setTimeout(() => this.game.camera.fade(), 9000)
 
-    setTimeout(() => this.game.state.start('Info'), 10000)
+    setTimeout(() => this.game.sounds.win.fadeOut(1000), 9000)
+    setTimeout(() => this.game.sounds.win.stop(), 10000)
+    setTimeout(() => this.game.state.start('Title'), 10000)
 
   }}
