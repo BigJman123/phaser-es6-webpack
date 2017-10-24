@@ -36,6 +36,11 @@ export default class extends Phaser.State {
     this.GameText = new GameText(this.game)
     this.GameText.countdown()
 
+    // let explosion = this.game.add.sprite(enemy.x - 55, enemy.y, 'explosion');
+    // let boom = explosion.animations.add('boom');
+    // explosion.scale.setTo(2.5, 2.5);
+    // explosion.animations.play('boom', 30, false, true);
+
     this.timerText = new Phaser.Text(this.game, 383, 100, "Time:" + this.game.config.minute, { fontSize: '45px', fill: '#fff', font: 'Press Start 2P' });
     setTimeout(() => this.game.add.existing(this.timerText), 7000)
 
@@ -58,7 +63,17 @@ export default class extends Phaser.State {
     this.carLives.scale.setTo(.4, .4)
     this.game.add.existing(this.carLives)
 
-    
+    let dpad = new Phaser.Sprite(this.game, 192, 1175, 'dpad')
+    let direction = dpad.animations.add('direction')
+    dpad.scale.setTo(.6, .6)
+    dpad.animations.play('direction', 3, true, false)
+    this.game.add.existing(dpad)
+
+    setTimeout(() => {
+        game.add.tween(dpad).to({ alpha: 0 }, 500, Phaser.Easing.Quadratic.None, true, 0, 0, false);
+    }, 6350);
+
+    setTimeout(() => dpad.kill(), 6750)
 
     setTimeout(() => this.game.sounds.bgmusic.play("", 0, .5, false, false), 200)
 
@@ -81,7 +96,7 @@ export default class extends Phaser.State {
     this.car.body.velocity.y = 0
     this.car.body.allowGravity = false
 
-    this.game.add.tween(this.car).to({y: 1000}, 2000, Phaser.Easing.Quadratic.Out, true)
+    this.game.add.tween(this.car).to({y: 1350}, 2000, Phaser.Easing.Quadratic.Out, true)
 
   }
 

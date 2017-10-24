@@ -31,6 +31,8 @@ export default class extends Phaser.State {
     this.load.spritesheet('explosion', 'assets/images/explosion.png', 96, 96);
     this.load.spritesheet('button', 'assets/images/buttonpush.png', 98, 144);
     this.load.spritesheet('lives', 'assets/images/livessprite.png', 450, 302);
+    this.load.spritesheet('dpad', 'assets/images/dpad.png', 600, 600)
+    this.load.spritesheet('dpad2', 'assets/images/dpad2.png', 238, 238)
 
     this.load.audio('game', 'assets/sounds/game.mp3');
     this.load.audio('win', 'assets/sounds/win.mp3');

@@ -19,10 +19,12 @@ export default class {
 	    setTimeout(() => this.one.kill(), 5750)
 
 	    this.go = new Phaser.Text(this.game, 410, 300, "GO!", { fontSize: '125px', fill: '#fff', font: 'Press Start 2P' })
+	    
 	    setTimeout(() => {
 	    	this.game.add.existing(this.go)
 	    	this.game.config.playerControlsEnabled = true
 		}, 6250)
+	    
 	    setTimeout(() => this.go.kill(), 6750)
 	}
 
