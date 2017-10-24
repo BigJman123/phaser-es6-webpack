@@ -47,7 +47,7 @@ export default class extends Phaser.State {
     //setup sounds
     this.game.sounds.bgmusic = new Phaser.Sound(this.game, 'game', 1, false)
     this.game.sounds.deadMusic = new Phaser.Sound(this.game, 'dead', 1, false)
-    this.game.sounds.explode = new Phaser.Sound(this.game, 'explosion', .8, false)
+    this.game.sounds.explode = new Phaser.Sound(this.game, 'explosion', 1, false)
     this.game.sounds.horn = new Phaser.Sound(this.game, 'horn', 1, false)
     this.game.sounds.win = new Phaser.Sound(this.game, 'win', 1, false)
 

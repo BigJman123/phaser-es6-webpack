@@ -10,7 +10,7 @@ export default class extends Phaser.State {
 
   create () {
     
-    this.game.sounds.win.play("", 0, .3, false, false)
+    this.game.sounds.win.play("", 0, .8, false, false)
 
     this.camera.flash('#000000');
 

@@ -75,7 +75,7 @@ export default class extends Phaser.State {
 
     setTimeout(() => dpad.kill(), 6750)
 
-    setTimeout(() => this.game.sounds.bgmusic.play("", 0, .5, false, false), 200)
+    setTimeout(() => this.game.sounds.bgmusic.play("", 0, 1, false, false), 200)
 
   }
 
@@ -193,7 +193,7 @@ export default class extends Phaser.State {
       if (this.game.config.spawning) {
 
         // explode car!
-        this.game.sounds.explode.play("", 0, .2, false, true)
+        this.game.sounds.explode.play("", 0, .4, false, true)
 
         this.game.config.lives--;
         this.carLives.frame++;
@@ -212,7 +212,7 @@ export default class extends Phaser.State {
           this.game.config.playerControlsEnabled = false;
 
           // queue the music!
-          this.game.sounds.deadMusic.play("", 0, .5, false, false)
+          this.game.sounds.deadMusic.play("", 0, .8, false, false)
 
           // stop the music!
           this.game.sounds.bgmusic.stop()

@@ -34,7 +34,7 @@ export default class {
 	    if(this.game.config.playerControlsEnabled) {
 
 	    	if (this.controller.justPressed(Phaser.Gamepad.XBOX360_A, 0) || this.controller.justPressed(Phaser.Gamepad.XBOX360_B, 0)){
-				this.game.sounds.horn.play("", 0, .2, false, false)
+				this.game.sounds.horn.play("", 0, .5, false, false)
 			}
 	        
 	        if(this.controller.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
