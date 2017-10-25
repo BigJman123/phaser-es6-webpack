@@ -10,8 +10,10 @@ export default class extends Phaser.State {
   init () {}
 
   create () {
+    this.cheatTimer = null;
 
     this.game.config.reset();
+    this.game.config.resetCheats();
 
     this.camera.flash('#000000');
 
@@ -55,6 +57,19 @@ export default class extends Phaser.State {
   update () {
     if (this.game.config.state === 'Title') {
       this.controls.startGameOnButtonPress();
+    }
+
+    if(this.controls.holdingLeft()) {
+      if (this.cheatTimer == null) {
+        this.cheatTimer = setTimeout(() => {
+          this.game.config.addCheat()
+          this.game.sounds.horn.play("", 0, .5, false, false)
+        }
+        , 3000);
+      }
+    } else {
+      clearTimeout(this.cheatTimer);
+      this.cheatTimer = null;
     }
   }
 }

@@ -59,7 +59,7 @@ export default class extends Phaser.State {
     
     console.log('create method called')
 
-    this.carLives = new Phaser.Sprite(this.game, 25, 1775, 'lives', 0)
+    this.carLives = new Phaser.Sprite(this.game, 25, 1775, this.game.config.livesSprite, 0)
     this.carLives.scale.setTo(.4, .4)
     this.game.add.existing(this.carLives)
 
@@ -85,7 +85,7 @@ export default class extends Phaser.State {
       game: this.game,
       x: 625,
       y: 2500,
-      asset: 'cherryred'
+      asset: this.game.config.carSprite
     })
 
 
@@ -153,8 +153,6 @@ export default class extends Phaser.State {
       this.livesText.kill()
       this.carLives.kill()
 
-      // this.game.sounds.bgmusic.stop()
-
       setTimeout(() => {
         this.game.add.tween(this.car).to({y: -500}, 2000, Phaser.Easing.Quadratic.In, true)
       }, 4000);
@@ -182,25 +180,14 @@ export default class extends Phaser.State {
       this.game.physics.arcade.gravity.y = this.game.config.gravity;
   }
 
-  update() {
+  decreasePlayerLives() {
+    this.game.config.lives--;
+    this.carLives.frame++;
+  }
 
-    // detect collisions
-    game.physics.arcade.collide(this.car, this.wallLeft)
-    game.physics.arcade.collide(this.car, this.wallRight)
+  gameOver() {
 
-    game.physics.arcade.collide(this.game.enemy, this.car, (car, enemy) =>  {
-
-      if (this.game.config.spawning) {
-
-        // explode car!
-        this.game.sounds.explode.play("", 0, .4, false, true)
-
-        this.game.config.lives--;
-        this.carLives.frame++;
-
-        this.spawn.destroyEnemy(enemy);
-
-        if(this.game.config.lives === 0) {
+          this.game.config.endOfLevel
 
           this.game.config.spawning = false
           
@@ -222,9 +209,27 @@ export default class extends Phaser.State {
 
           setTimeout(() => this.camera.fade('#000000'), 4500)
           setTimeout(() => this.game.state.start('Title'), 5500)
-          
-        } 
+  }
 
+  update() {
+
+    // detect collisions
+    game.physics.arcade.collide(this.car, this.wallLeft)
+    game.physics.arcade.collide(this.car, this.wallRight)
+
+    // Enemy & Car Collide
+    game.physics.arcade.collide(this.game.enemy, this.car, (car, enemy) =>  {
+
+      if (! this.game.config.endOfLevel) {
+
+        // decrease lives if not invincible
+        if (! this.game.config.invincible) {this.decreasePlayerLives();}
+
+        // destroy enemy
+        this.spawn.destroyEnemy(enemy);
+
+        // No lives left
+        if(this.game.config.lives === 0) {this.gameOver();}
       }
     
     });
@@ -234,4 +239,5 @@ export default class extends Phaser.State {
     this.controls.moveCarOnDirectionInput(this.car)
 
   }
+
 }

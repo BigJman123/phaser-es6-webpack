@@ -25,4 +25,16 @@ export default class {
 
     this.enableDebug = true;
   }
+
+  addCheat() {
+    this.invincible = true
+    this.carSprite = 'pinky'
+    this.livesSprite = 'pinkyLives'
+  }
+
+  resetCheats() {
+    this.invincible = false;
+    this.carSprite = 'cherryred'
+    this.livesSprite = 'lives'
+  }
 }

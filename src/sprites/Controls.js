@@ -25,6 +25,10 @@ export default class {
 		// honk horn code
 	}
 
+	holdingLeft() {
+		return this.controller.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1
+	}
+
 	moveCarOnDirectionInput(car) {
 
 		car.body.velocity.x = 0
