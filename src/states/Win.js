@@ -18,7 +18,7 @@ export default class extends Phaser.State {
 
     this.game.add.existing(this.win)
 
-    this.car = new Phaser.Sprite(this.game, 2000, 915, 'cherryred')
+    this.car = new Phaser.Sprite(this.game, 2000, 915, this.game.config.carSprite)
     this.car.anchor.setTo(0.5, 0.5);
     this.car.angle = -90;
     this.car.scale.setTo(.7, .7);
