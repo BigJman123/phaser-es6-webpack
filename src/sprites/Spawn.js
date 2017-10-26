@@ -49,14 +49,16 @@ export default class {
 
     enemy.destroy();
 
-    // cause explosion
+    // play sound
+    this.game.sounds.explode.play("", 0, .4, false, true)
+
+    // play explosion animation
     let explosion = this.game.add.sprite(enemy.x - 55, enemy.y, 'explosion');
     let boom = explosion.animations.add('boom');
     explosion.scale.setTo(2.5, 2.5);
     explosion.animations.play('boom', 30, false, true);
     
-    
-    // game canvas will flash red
+    // flash screen
     this.game.camera.flash(0xff0000, 200);
   }
 

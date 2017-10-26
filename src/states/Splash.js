@@ -14,6 +14,7 @@ export default class extends Phaser.State {
     // load your assets
     //
     this.load.image('cherryred', 'assets/images/cherryred.png')
+    this.load.image('pinky', 'assets/images/pinky.png')
     this.load.image('highway', 'assets/images/road3.png');
     this.load.image('car1', 'assets/images/car1.png', 136, 300);
     this.load.image('car2', 'assets/images/car2.png', 138, 299);
@@ -31,6 +32,7 @@ export default class extends Phaser.State {
     this.load.spritesheet('explosion', 'assets/images/explosion.png', 96, 96);
     this.load.spritesheet('button', 'assets/images/buttonpush.png', 98, 144);
     this.load.spritesheet('lives', 'assets/images/livessprite.png', 450, 302);
+    this.load.spritesheet('pinkyLives', 'assets/images/pinkylivessprite.png', 450, 302);
     this.load.spritesheet('dpad', 'assets/images/dpad.png', 600, 600)
     this.load.spritesheet('dpad2', 'assets/images/dpad2.png', 238, 238)
 
