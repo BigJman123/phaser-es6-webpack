@@ -187,28 +187,28 @@ export default class extends Phaser.State {
 
   gameOver() {
 
-          this.game.config.endOfLevel
+    this.game.config.endOfLevel = true
 
-          this.game.config.spawning = false
-          
-          this.car.kill()
-          this.timerText.kill()
-          this.livesText.kill()
-          this.carLives.kill()
+    this.game.config.spawning = false
+    
+    this.car.kill()
+    this.timerText.kill()
+    this.livesText.kill()
+    this.carLives.kill()
 
-          this.game.config.playerControlsEnabled = false;
+    this.game.config.playerControlsEnabled = false;
 
-          // queue the music!
-          this.game.sounds.deadMusic.play("", 0, .8, false, false)
+    // queue the music!
+    this.game.sounds.deadMusic.play("", 0, .8, false, false)
 
-          // stop the music!
-          this.game.sounds.bgmusic.stop()
+    // stop the music!
+    this.game.sounds.bgmusic.stop()
 
-          this.gameOver = new Phaser.Text(this.game, 319, 300, 'Game Over', { fontSize: '50px', fill: '#fff', font: 'Press Start 2P' })
-          setTimeout(() => this.game.add.existing(this.gameOver), 1900)
+    this.gameOverText = new Phaser.Text(this.game, 319, 300, 'Game Over', { fontSize: '50px', fill: '#fff', font: 'Press Start 2P' })
+    setTimeout(() => this.game.add.existing(this.gameOverText), 1900)
 
-          setTimeout(() => this.camera.fade('#000000'), 4500)
-          setTimeout(() => this.game.state.start('Title'), 5500)
+    setTimeout(() => this.camera.fade('#000000'), 4500)
+    setTimeout(() => this.game.state.start('Title'), 5500)
   }
 
   update() {
@@ -229,7 +229,9 @@ export default class extends Phaser.State {
         this.spawn.destroyEnemy(enemy);
 
         // No lives left
-        if(this.game.config.lives === 0) {this.gameOver();}
+        if(this.game.config.lives === 0) {
+          this.gameOver();
+        }
       }
     
     });
