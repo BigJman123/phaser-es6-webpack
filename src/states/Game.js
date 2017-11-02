@@ -57,8 +57,6 @@ export default class extends Phaser.State {
     setTimeout(() => this.car.body.collideWorldBounds = true, 7000)
     
     
-    console.log('create method called')
-
     this.carLives = new Phaser.Sprite(this.game, 25, 1775, this.game.config.livesSprite, 0)
     this.carLives.scale.setTo(.4, .4)
     this.game.add.existing(this.carLives)

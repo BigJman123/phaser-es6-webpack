@@ -27,13 +27,10 @@ export default class {
   					this.enemy.create()
   					resolve();
   			}, wait);
-  		} else {
-  			reject();
   		}
 
   	})
   	.then(() => this.spawn(this.game.config.spawnDelay))
-  	.catch(() => console.log('no more enemies'))
   }
 
   checkEnemyBounds() {
